@@ -1,0 +1,23 @@
+{
+  "name": "miner-down",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Boxte/miner-down.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Boxte/miner-down/issues"
+  },
+  "homepage": "https://github.com/Boxte/miner-down#readme",
+  "dependencies": {
+    "eslint": "^8.19.0",
+    "puppeteer": "^15.3.0"
+  }
+}
