@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Boxte/miner-down#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "eslint": "^8.19.0",
     "puppeteer": "^15.3.0"
   }
