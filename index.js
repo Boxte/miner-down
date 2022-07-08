@@ -20,7 +20,7 @@ exports.handler = async (event) => {
     var element = await page.waitForSelector(activeWorkersSelector);
     var text = await page.evaluate(element => element.textContent, element);
 
-    if (browser !== null ){
+    if (browser !== null) {
         await browser.close();
     }
 
