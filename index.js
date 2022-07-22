@@ -1,12 +1,20 @@
-// This version of chromium works wil Node 14.x on AWS Lambda
+/**
+ * Having trouble running chrome-aws-lambda with node v16. Need to use node v14. Cannot use discord.js v13 with node v14.
+ * Need to use puppeteer because Hiveon loads site with JavaScript. It is not static so need to use a CSS selector to grab number of active workers.
+ * This still opens Chromiumlocally.
+ */
+
 const chromium = require("chrome-aws-lambda");
 require("dotenv").config();
-const Discord = require("discord.js");
 
 const url = `https://hiveon.net/eth/overview?miner=${process.env.MINER_ADDRESS}`;
 const activeWorkersSelector = `#next-focus-wrapper > div.Page-module-root-1YEf0 > div > div > section:nth-child(4) > div > div.Overview_widgets__yUK6Y > div:nth-child(3) > div.Overview_widgetContent__31FBw > div.Overview_activeCounter__1fj9O > span:nth-child(1)`;
 
-exports.handler = async (event) => {
+/**
+ *
+ * @param {*} event
+ */
+exports.handler = async (event, context) => {
   const utcRequestTimestamp = new Date().getTime();
   const browser = await chromium.puppeteer.launch({
     args: chromium.args,
@@ -36,19 +44,6 @@ exports.handler = async (event) => {
     utcResponseTimestamp,
     utcReqResDifference,
   };
-
-  const webhook = new Discord.WebhookClient(
-    process.env.WEBHOOK_ID,
-    process.env.WEBHOOK_TOKEN
-  );
-
-  const { sendWebhook } = event;
-  if (sendWebhook) {
-    const msg = `Number of active workers: ${numberOfActiveWorkers}\nTime for response: ${
-      utcReqResDifference / 1000
-    }s`;
-    webhook.send(msg).catch(console.error);
-  }
 
   return jsonData;
 };

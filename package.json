@@ -18,12 +18,11 @@
   },
   "homepage": "https://github.com/Boxte/miner-down#readme",
   "dependencies": {
-    "chrome-aws-lambda": "^10.1.0",
-    "discord.js": "^13.8.1",
-    "dotenv": "^16.0.1",
-    "puppeteer-core": "^10.4.0"
+    "dotenv": "^16.0.1"
   },
   "devDependencies": {
-    "eslint": "^8.19.0"
+    "chrome-aws-lambda": "^10.1.0",
+    "eslint": "^8.19.0",
+    "puppeteer": "^15.5.0"
   }
 }
